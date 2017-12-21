@@ -131,6 +131,9 @@ public class MainClass {
         TableColumn t=jt.getColumnModel().getColumn(0);
                     t.setPreferredWidth(200);
         
+        TableColumn tcc=jt.getColumnModel().getColumn(1);
+                    tcc.setPreferredWidth(80);
+        
         jt.setFillsViewportHeight(true);
         jt.setFont(new Font("Arial",Font.BOLD,20));
         jt.setRowHeight(30);
@@ -170,6 +173,9 @@ public class MainClass {
                     TableColumn t1=jt2.getColumnModel().getColumn(0);
                     t1.setPreferredWidth(100);
                     
+                    TableColumn tc2=jt2.getColumnModel().getColumn(1);
+                    tc2.setPreferredWidth(80);
+                    
                     jt2.setFillsViewportHeight(true);
                     jt2.setFont(new Font("Arial",Font.BOLD,20));
                     jt2.setRowHeight(30);
@@ -188,6 +194,8 @@ public class MainClass {
                     tc3.setCellRenderer(new TableCustom(2));
                     TableColumn t3=jt3.getColumnModel().getColumn(0);
                     t3.setPreferredWidth(100);
+                    TableColumn tcc3=jt3.getColumnModel().getColumn(1);
+                    tcc3.setPreferredWidth(80);
                     
                     jt3.setFillsViewportHeight(true);
                     jt3.setFont(new Font("Arial",Font.BOLD,20));
@@ -208,6 +216,9 @@ public class MainClass {
                     tc4.setCellRenderer(new TableCustom(2));
                     TableColumn t4=jt4.getColumnModel().getColumn(0);
                     t4.setPreferredWidth(100);
+                    
+                    TableColumn t4c=jt4.getColumnModel().getColumn(1);
+                    t4c.setPreferredWidth(80);
                     
                     jt4.setFillsViewportHeight(true);
                     jt4.setFont(new Font("Arial",Font.BOLD,20));
@@ -230,6 +241,9 @@ public class MainClass {
                     TableColumn t5=jt5.getColumnModel().getColumn(0);
                     t5.setPreferredWidth(100);
                     
+                    TableColumn t5c=jt5.getColumnModel().getColumn(1);
+                    t5c.setPreferredWidth(80);
+                    
                     jt5.setFillsViewportHeight(true);
                     jt5.setFont(new Font("Arial",Font.BOLD,20));
                     jt5.setRowHeight(30);
@@ -251,6 +265,8 @@ public class MainClass {
                     TableColumn t6=jt6.getColumnModel().getColumn(0);
                     t6.setPreferredWidth(100);
                     
+                    TableColumn t6c=jt6.getColumnModel().getColumn(1);
+                    t6c.setPreferredWidth(80);
                     jt6.setFillsViewportHeight(true);
                     jt6.setFont(new Font("Arial",Font.BOLD,20));
                     jt6.setRowHeight(30);
