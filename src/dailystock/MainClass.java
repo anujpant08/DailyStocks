@@ -22,6 +22,8 @@ import org.jsoup.select.Elements;
 import javax.swing.*;
 import javax.swing.table.TableColumn;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -30,6 +32,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -58,7 +61,7 @@ public class MainClass {
             "IDFC.BO","IDFCBANK.NS","IGL.BO","INDHOTEL.BO","INDUSINDBK.BO","INFY.NS","IOB.BO","IOC.BO","IPCALAB.BO","ITC.BO","J&KBANK.BO","JPINFRATEC.NS","LTTS.NS",
             "L&TFH.BO","MARUTI.BO","MPHASIS.BO","NESTLEIND.BO","NIITLTD.BO","NTPC.NS","ORIENTBANK.BO","ONGC.BO","PETRONET.NS","PIDILITIND.BO","PFC.NS","PNB.NS","PTC.NS","RAYMOND.BO","RELCAPITAL.NS",
             "RELIANCE.BO","SAIL.NS","SBIN.BO","SRF.BO","SUNPHARMA.BO","SUZLON.BO","SYNDIBANK.NS","TATAMOTORS.NS","TATAPOWER.BO","TECHM.NS","TCS.NS","TATASTEEL.NS","TV18BRDCST.BO",
-            "TVSMOTOR.BO","VIJAYABANK.BO","VOLTAS.BO","WIPRO.NS","YESBANK.BO","ZEEL.BO","BHARATFORG.BO",
+            "TVSMOTOR.BO","VIJAYABANK.BO","VOLTAS.BO","WIPRO.NS","YESBANK.BO","ZEEL.BO","BHARATFORG.NS",
             "BAJFINANCE.BO","BAJAJFINSV.BO","BLUESTARCO.BO","CAPF.BO","CDSL.NS","COCHINSHIP.NS","DHFL.NS","DMART.NS","EDELWEISS.BO","ENDURANCE.NS","EQUITAS.NS","FORCEMOT.BO","GABRIEL.NS","GODREJCP.NS","HAVELLS.NS","HDIL.BO","JISLJALEQS.BO",
             "LICHSGFIN.BO","M&MFIN.NS","NBCC.NS","NMDC.NS","RNAVAL.NS","SIS.BO","TATACHEM.BO","THERMAX.NS","UPL.BO","VIPIND.BO"));
     
@@ -71,29 +74,25 @@ public class MainClass {
      */
     public static void main(String args[]) throws IOException
     {
-        try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
-        } catch (Exception ex) {
-            Logger.getLogger(MainClass.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
+          
         GridBagConstraints c = new GridBagConstraints();
         JLabel jlbl=new JLabel("    Loading stock quotes...Please Wait!");
                
         jlbl.setPreferredSize(new Dimension(250,250));
         jff.add(jlbl);
-
+        
         jff.setSize(new Dimension(250,250));
         jff.setLocationRelativeTo(null);
-        jff.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        jff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jff.setVisible(true);
 
         int j=0;
         Collections.sort(stocks);
         
             for (j = 0; j < stocks.size(); j++) {
-                try {
-
+                try 
+                {
+                    
                     yahoofin(stocks.get(j),j);
               
             }
@@ -111,6 +110,20 @@ public class MainClass {
         
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
+        
+        GregorianCalendar cl = new GregorianCalendar();
+        int days = cl.get(GregorianCalendar.DAY_OF_MONTH);
+        int months = cl.get(GregorianCalendar.MONTH);
+        int years = cl.get(GregorianCalendar.YEAR);
+        
+        cl.set(years, months, days);
+        int dayweek=cl.get(Calendar.DAY_OF_WEEK);
+        
+        if(dayweek!=7 && dayweek!=1)
+            
+        {
+            
+        
         FileWriter fw=new FileWriter(dateFormat.format(date)+".txt");
         
         for(int k=0;k<price.size();k++)
@@ -140,6 +153,8 @@ public class MainClass {
         jp.add(jt);
         BoxLayout box=new BoxLayout(jp,BoxLayout.X_AXIS);
         jp.setLayout(box);
+        
+        }
         GregorianCalendar cal = new GregorianCalendar();
         int day = cal.get(GregorianCalendar.DAY_OF_MONTH);
         int month = cal.get(GregorianCalendar.MONTH);
@@ -263,7 +278,7 @@ public class MainClass {
                     TableColumn tc6=jt6.getColumnModel().getColumn(2);
                     tc6.setCellRenderer(new TableCustom(2));
                     TableColumn t6=jt6.getColumnModel().getColumn(0);
-                    t6.setPreferredWidth(100);
+                    t6.setPreferredWidth(200);
                     
                     TableColumn t6c=jt6.getColumnModel().getColumn(1);
                     t6c.setPreferredWidth(80);
@@ -308,6 +323,8 @@ public class MainClass {
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.setSize(new Dimension(5000,5000));
         jf.setVisible(true);
+        
+        sensex();
         
         
     }
@@ -384,8 +401,15 @@ public class MainClass {
      public static void yahoofin(String stock, int j) throws IOException, InterruptedException
      {
          try{
-         Document document = Jsoup.connect("https://in.finance.yahoo.com/quote/"+stock+"?p="+stock).get();
-        Element content = document.getElementById("app");
+         Document document = Jsoup.connect("https://in.finance.yahoo.com/quote/"+stock+"?p="+stock)
+                 .timeout(5000)
+                 .followRedirects(true)
+                 .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0")
+                 .ignoreHttpErrors(true)
+                 .referrer("http://www.google.com")
+                 .get();
+         
+         Element content = document.getElementById("app");
         String s=content.text();
         System.out.println(s);
         
@@ -394,7 +418,17 @@ public class MainClass {
         int w=s.indexOf("watchlist");
         String sub=s.substring(w,w+50);
         
-        if(sub.contains("+"))
+        if(sub.contains("-") && sub.contains("+"))
+        {
+            psign=sub.indexOf("+");
+            int obrkt=sub.indexOf("(");
+            chng=sub.substring(psign,obrkt);
+            int wa=sub.indexOf("watchlist");
+            pr=sub.substring(wa+9,psign);
+            
+        }
+        
+        else if(sub.contains("+") && !sub.contains("-"))
         {
             psign=sub.indexOf("+");
             int obrkt=sub.indexOf("(");
@@ -402,7 +436,7 @@ public class MainClass {
             int wa=sub.indexOf("watchlist");
             pr=sub.substring(wa+9,psign);
         }
-        if(sub.contains("-"))
+        else if(sub.contains("-") && !sub.contains("+"))
         {
             nsign=sub.indexOf("-");
             int obrkt=sub.indexOf("(");
@@ -411,13 +445,14 @@ public class MainClass {
             pr=sub.substring(wa+9,nsign);
         }
         
-        if(!sub.contains("-")&& !sub.contains("+"))
+        else
         {
             nsign=sub.indexOf("-");
             chng="0.00";
             int wa=sub.indexOf("watchlist");
             pr=sub.substring(wa+9,(sub.indexOf(chng)+1));
         }
+        
         
         int vol=s.indexOf("Volume");
         int avg=s.indexOf("Avg.");
@@ -526,6 +561,117 @@ public class MainClass {
                     
                     return oldtable;
      }
+     
+     static public void sensex() throws IOException
+     {
+          int count=0;
+          String[] columns={"Date","Close","Volume"};
+          String[][] rows=new String[5][3];
+    
+         ArrayList<String> list=new ArrayList<>();
+         
+         Document doc = Jsoup.connect("https://in.finance.yahoo.com/quote/%5EBSESN/history?p=%5EBSESN").get();
+
+        String[] a0=new String[10];
+        
+    for (Element table : doc.select("table")) {
+        for (Element row : table.select("tr")) {
+            Elements tds = row.select("td");
+            if (tds.size()>6 )
+            {                
+                String text=tds.get(0).text() + ":" + tds.get(4).text()+":"+tds.get(6).text();
+                System.out.println(text);
+                a0=text.split(":");
+                
+                for(int i=0;i<a0.length;i++)
+            {
+                list.add(a0[i]);
+            }
+            
+              
+             }
+        }
+    }
+                for(int i=0;i<15;i++)
+                {
+                    System.out.println(list.get(i));
+                }
+                
+                int a=0;
+                             
+   
+           for(int i=0;i<list.size();i++)
+            {
+              if(count<5)
+              {
+                if(a<3)
+                {
+                    if(a!=2)
+                    {
+                    rows[count][a]=list.get(i);
+                    a++;
+                    }
+                    else
+                    {
+                        rows[count][a]=list.get(i);
+                        count++;
+                        a=0;
+                    }
+                    
+                }
+               
+            }
+              else
+                  break;
+              
+        }
+           
+           for(int i=0;i<rows.length;i++)
+           {
+               for(int j=0;j<3;j++)
+                   System.out.print(rows[i][j]+"\t");
+               System.out.println();
+           }
+           
+    
+   JFrame jf=new JFrame("SENSEX Daily");
+   
+        DefaultTableModel model = new DefaultTableModel(rows, columns);
+        
+        JTable jtindex=new JTable(model)
+        {
+            
+            //  Returning the Class of each column will allow different
+            //  renderers to be used based on Class
+            public Class getColumnClass(int column)
+            {
+                
+                return getValueAt(0, column).getClass();
+            }
+        };
+        
+        jtindex.setRowHeight(40);
+        
+        
+                    JPanel jp=new JPanel();
+                    jp.setSize(200,1000);
+                    jp.add(jtindex);
+                    BoxLayout box6=new BoxLayout(jp,BoxLayout.X_AXIS);
+                    jp.setLayout(box6);
+                    
+   jtindex.setPreferredScrollableViewportSize(jtindex.getPreferredSize());
+   jtindex.setFont(new Font("Arial",Font.BOLD,30));
+   JScrollPane jsindex=new JScrollPane(jp);
+        jsindex.getVerticalScrollBar().setUnitIncrement(16);
+        jf.add(jsindex);
+   jf.add(jsindex);
+   jf.setLocationRelativeTo(null);
+   //jf.pack();
+   jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+   jf.setSize(new Dimension(500,500));
+   jf.setVisible(true);
+     }
+     
      
 }
      
