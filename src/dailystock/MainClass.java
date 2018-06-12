@@ -71,6 +71,7 @@ public class MainClass {
     /**
      *
      * @param args
+     * @throws java.io.IOException
      */
     public static void main(String args[]) throws IOException
     {
@@ -402,7 +403,7 @@ public class MainClass {
      {
          try{
          Document document = Jsoup.connect("https://in.finance.yahoo.com/quote/"+stock+"?p="+stock)
-                 .timeout(5000)
+                 .timeout(30000)
                  .followRedirects(true)
                  .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0")
                  .ignoreHttpErrors(true)
