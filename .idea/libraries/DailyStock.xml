@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="DailyStock">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/DailyStock.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

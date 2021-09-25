@@ -41,7 +41,7 @@ public class MainClass {
     static ArrayList<String> vlm = new ArrayList<String>();
     //add stocks here in arraylist
 
-    static LinkedList<String> stocks = new LinkedList<String>(Arrays.asList("3MINDIA.NS", "AARTIIND.NS", "AAVAS.NS", "ABBOTINDIA.NS", "ACC.NS", "ADANIGAS.NS", 
+    static LinkedList<String> stocks = new LinkedList<String>(Arrays.asList("3MINDIA.NS", "AARTIIND.NS", "AAVAS.NS", "ABBOTINDIA.NS", "ACC.NS", "ATGL.NS",
             "ADANIGREEN.NS", "ADANIPORTS.NS", "ADANIPOWER.NS", "ADANITRANS.NS", "ABCAPITAL.NS", "ABFRL.NS", "ADVENZYMES.NS", "AEGISCHEM.NS", "AFFLE.NS",
             "AIAENG.NS", "AJANTPHARM.NS", "AKZOINDIA.NS", "APLLTD.NS", "ALKEM.NS", "ALLCARGO.NS", "AMARAJABAT.NS", "AMBER.NS", "AMBUJACEM.NS", "APLAPOLLO.NS",
             "APOLLOHOSP.NS", "APOLLOTYRE.NS", "ARVINDFASN.NS", "ASAHIINDIA.NS", "ASHOKLEY.NS", "ASHOKA.NS", "ASIANPAINT.NS", "ASTERDM.NS", 
@@ -49,7 +49,7 @@ public class MainClass {
             "BAJAJ-AUTO.NS", "BAJAJCON.NS", "BAJAJELEC.NS", "BAJFINANCE.NS", "BAJAJFINSV.NS", "BAJAJHLDNG.NS", "BALKRISIND.NS", "BALMLAWRIE.NS", 
             "BALRAMCHIN.NS", "BANDHANBNK.NS", "BANKBARODA.NS", "BANKINDIA.NS", "MAHABANK.NS", "BASF.NS", "BATAINDIA.NS", "BAYERCROP.NS", 
             "BEML.NS", "BERGEPAINT.NS", "BDL.NS", "BEL.NS", "BHARATFORG.NS", "BHEL.NS", "BPCL.NS", "BHARTIARTL.NS", 
-            "INFRATEL.NS", "BIOCON.NS", "BIRLACORPN.NS", "BSOFT.NS", "BLISSGVS.NS", "BLUEDART.NS", "BLUESTARCO.NS", "BBTC.NS", 
+            "INDUSTOWER.NS", "BIOCON.NS", "BIRLACORPN.NS", "BSOFT.NS", "BLISSGVS.NS", "BLUEDART.NS", "BLUESTARCO.NS", "BBTC.NS",
             "BOMDYEING.NS", "BOSCHLTD.NS", "BRIGADE.NS", "BRITANNIA.NS", "BSE.NS", "CADILAHC.NS", "CANFINHOME.NS", "CANBK.NS", 
             "CAPLIPOINT.NS", "CGCL.NS", "CARBORUNIV.NS", "CARERATING.NS", "CASTROLIND.NS", "CCL.NS", "CEATLTD.NS", "CENTRALBK.NS", 
             "CDSL.NS", "CENTURYPLY.NS", "CERA.NS", "CESC.NS", "CHALET.NS", "CHAMBLFERT.NS", "CHENNPETRO.NS", "CHOLAFIN.NS", 
@@ -58,7 +58,7 @@ public class MainClass {
             "DCMSHRIRAM.NS", "DEEPAKNTR.NS", "DELTACORP.NS", "DHFL.NS", "DBL.NS", "DISHTV.NS", "DCAL.NS", "DIVISLAB.NS", 
             "DIXON.NS", "DLF.NS", "LALPATHLAB.NS", "DRREDDY.NS", "EIDPARRY.NS", "ECLERX.NS", "EDELWEISS.NS", "EICHERMOT.NS", 
             "EIHOTEL.NS", "ELGIEQUIP.NS", "EMAMILTD.NS", "ENDURANCE.NS", "ENGINERSIN.NS", "EQUITAS.NS", "ERIS.NS", "ESCORTS.NS", 
-            "ESSELPACK.NS", "EXIDEIND.NS", "FDC.NS", "FMGOETZE.NS", "FINEORG.NS", "FINCABLES.NS", "FSL.NS", "FORTIS.NS", 
+            "EPL.NS", "EXIDEIND.NS", "FDC.NS", "FMGOETZE.NS", "FINEORG.NS", "FINCABLES.NS", "FSL.NS", "FORTIS.NS",
             "FCONSUMER.NS", "FLFL.NS", "FRETAIL.NS", "GAIL.NS", "GALAXYSURF.NS", "GARFIBRES.NS", "GAYAPROJ.NS", "GEPIL.NS", 
             "GET&D.NS", "GICRE.NS", "GHCL.NS", "GILLETTE.NS", "GLAXO.NS", "GLENMARK.NS", "GMRINFRA.NS", "GODFRYPHLP.NS", 
             "GODREJAGRO.NS", "GODREJCP.NS", "GODREJIND.NS", "GODREJPROP.NS", "GRANULES.NS", "GRAPHITE.NS", "GRASIM.NS", "GREAVESCOT.NS", 
@@ -66,19 +66,19 @@ public class MainClass {
             "GULFOILLUB.NS", "HATSUN.NS", "HAVELLS.NS", "HCLTECH.NS", "HDFCAMC.NS", "HDFCBANK.NS", "HDFCLIFE.NS", "HEG.NS", 
             "HEIDELBERG.NS", "HERITGFOOD.NS", "HEROMOTOCO.NS", "HEXAWARE.NS", "HFCL.NS", "HSCL.NS", "HIMATSEIDE.NS", "HINDALCO.NS", "HAL.NS", "HINDCOPPER.NS", 
             "HINDPETRO.NS", "HINDUNILVR.NS", "HINDZINC.NS", "HONAUT.NS", "HUDCO.NS", "HDFC.NS", "ICICIBANK.NS", "ICICIGI.NS", "ICICIPRULI.NS", "ISEC.NS", 
-            "ICRA.NS", "IDBI.NS", "IDFCFIRSTB.NS", "IFBIND.NS", "IFCI.NS", "IIFL.NS", "ITDC.NS", "IBULHSGFIN.NS", "IBULISL.NS", "IBREALEST.NS", "IBVENTURES.NS", 
+            "ICRA.NS", "IDBI.NS", "IDFCFIRSTB.NS", "IFBIND.NS", "IFCI.NS", "IIFL.NS", "ITDC.NS", "IBULHSGFIN.NS", "YAARII.NS", "IBREALEST.NS", "DHANI.NS",
             "INDIAMART.NS", "INDIANB.NS", "IEX.NS", "IOC.NS", "IOB.NS", "INDOSTAR.NS", "IGL.NS", "INDUSINDBK.NS", "INFIBEAM.NS", "NAUKRI.NS", "INFY.NS", "INOXLEISUR.NS", 
             "INTELLECT.NS", "INDIGO.NS", "IPCALAB.NS", "IRB.NS", "IRCON.NS", "ITC.NS", "ITDCEM.NS", "ITI.NS", "JAGRAN.NS", "JAICORPLTD.NS", "JISLJALEQS.NS", "JAMNAAUTO.NS", 
             "JBCHEPHARM.NS", "JINDALSAW.NS", "JSLHISAR.NS", "JSL.NS", "JINDALSTEL.NS", "JKCEMENT.NS", "JKLAKSHMI.NS", "JKPAPER.NS", "JKTYRE.NS", 
-            "JMFINANCIL.NS", "JCHAC.NS", "JSWENERGY.NS", "JSWSTEEL.NS", "JUBLFOOD.NS", "JUBILANT.NS", "JUSTDIAL.NS", "JYOTHYLAB.NS", "KAJARIACER.NS", 
+            "JMFINANCIL.NS", "JCHAC.NS", "JSWENERGY.NS", "JSWSTEEL.NS", "JUBLFOOD.NS", "JUBLFOOD.NS", "JUSTDIAL.NS", "JYOTHYLAB.NS", "KAJARIACER.NS",
             "KALPATPOWR.NS", "KANSAINER.NS", "KARURVYSYA.NS", "KSCL.NS", "KEC.NS", "KEI.NS", "KENNAMET.NS", "KIRLOSENG.NS", "KNRCON.NS", 
             "KOLTEPATIL.NS", "KOTAKBANK.NS", "KPITTECH.NS", "KPRMILL.NS", "KRBL.NS", "L&TFH.NS", "LTTS.NS", "LAXMIMACH.NS", "LTI.NS", 
             "LT.NS", "LAURUSLABS.NS", "LEMONTREE.NS", "LICHSGFIN.NS", "LINDEINDIA.NS", "LUPIN.NS", "LUXIND.NS", "MAGMA.NS", "MGL.NS", 
             "MAHSCOOTER.NS", "MAHSEAMLES.NS", "M&MFIN.NS", "M&M.NS", "MAHINDCIE.NS", "MHRIL.NS", "MAHLOG.NS", "MANAPPURAM.NS", "MRPL.NS", "MARICO.NS", "MARUTI.NS", 
             "MASFIN.NS", "MFSL.NS", "METROPOLIS.NS", "MINDACORP.NS", "MINDAIND.NS", "MINDTREE.NS", "MIDHANI.NS", "MMTC.NS", "MOIL.NS", "MOTHERSUMI.NS", "MOTILALOFS.NS", 
             "MPHASIS.NS", "MRF.NS", "MCX.NS", "MUTHOOTFIN.NS", "NH.NS", "NATCOPHARM.NS", "NATIONALUM.NS", "NFL.NS", "NBVENTURES.NS", "NAVINFLUOR.NS", "NBCC.NS", 
-            "NCC.NS", "NESCO.NS", "NESTLEIND.NS", "NETWORK18.NS", "NHPC.NS", "NIITTECH.NS", "NILKAMAL.NS", "NAM-INDIA.NS", "NLCINDIA.NS", "NMDC.NS", "NTPC.NS", 
-            "OBEROIRLTY.NS", "ONGC.NS", "OIL.NS", "OMAXE.NS", "OFSS.NS", "ORIENTCEM.NS", "ORIENTELEC.NS", "ORIENTREF.NS", "PAGEIND.NS", "PARAGMILK.NS", "PCJEWELLER.NS", 
+            "NCC.NS", "NESCO.NS", "NESTLEIND.NS", "NETWORK18.NS", "NHPC.NS", "COFORGE.NS", "NILKAMAL.NS", "NAM-INDIA.NS", "NLCINDIA.NS", "NMDC.NS", "NTPC.NS",
+            "OBEROIRLTY.NS", "ONGC.NS", "OIL.NS", "OMAXE.NS", "OFSS.NS", "ORIENTCEM.NS", "ORIENTELEC.NS", "RHIM.NS", "PAGEIND.NS", "PARAGMILK.NS", "PCJEWELLER.NS",
             "PERSISTENT.NS", "PETRONET.NS", "PFIZER.NS", "PHILIPCARB.NS", "PHOENIXLTD.NS", "PIIND.NS", "PIDILITIND.NS", "PEL.NS", "PNBHOUSING.NS", 
             "PNCINFRA.NS", "POLYCAB.NS", "PFC.NS", "POWERGRID.NS", "PRAJIND.NS", "PRESTIGE.NS", "PRSMJOHNSN.NS", "PGHL.NS", "PGHH.NS", 
             "PTC.NS", "PNB.NS", "PVR.NS", "QUESS.NS", "RADICO.NS", "RVNL.NS", "RAIN.NS", "RAJESHEXPO.NS", "RALLIS.NS", 
@@ -86,7 +86,7 @@ public class MainClass {
             "RELINFRA.NS", "RPOWER.NS", "REPCOHOME.NS", "RESPONIND.NS", "RITES.NS", "SADBHAV.NS", "SANOFI.NS", "SBILIFE.NS", "SCHAEFFLER.NS", 
             "SIS.NS", "SHK.NS", "SFL.NS", "SHILPAMED.NS", "SHOPERSTOP.NS", "SHREECEM.NS", "RENUKA.NS", "SHRIRAMCIT.NS", 
             "SRTRANSFIN.NS", "SIEMENS.NS", "SJVN.NS", "SKFINDIA.NS", "SOBHA.NS", "SOLARINDS.NS", "SONATSOFTW.NS", "SPANDANA.NS", 
-            "SPICEJET.NS", "SRF.NS", "STARCEMENT.NS", "SBIN.NS", "SAIL.NS", "SWSOLAR.NS", "STRTECH.NS", "STAR.NS", 
+            "SPICEJET.NS", "SRF.NS", "STARCEMENT.NS", "SBIN.NS", "SAIL.NS", "SWSOLAR.NS", "STLTECH.NS", "STAR.NS",
             "SUDARSCHEM.NS", "SPARC.NS", "SUNPHARMA.NS", "SUNTV.NS", "SUNDARMFIN.NS", "SUNCLAYLTD.NS", "SUNDRMFAST.NS", "SUNTECK.NS", 
             "SUPRAJIT.NS", "SUPREMEIND.NS", "SUZLON.NS", "SWANENERGY.NS", "SYMPHONY.NS", "SYNGENE.NS" , "TCIEXP.NS" , "TCNSBRANDS.NS" , "TTKPRESTIG.NS" , 
             "TVTODAY.NS" , "TV18BRDCST.NS" , "TVSMOTOR.NS" , "TAKE.NS" , "TASTYBITE.NS" , "TCS.NS" , "TATACONSUM.NS" , "TATAELXSI.NS" , "TATAINVEST.NS" , 
@@ -121,24 +121,8 @@ public class MainClass {
 
         int j;
         Collections.sort(stocks);
-
-        for (j = 0; j < stocks.size(); j++) {
-            try {
-
-                yahoofin(stocks.get(j), j);
-
-            } catch (Exception e) {
-                System.out.println("Exception occured : " + e);
-
-            }
-        }
-
-        String[][] matrix;
-        matrix = display();
-
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
-
         GregorianCalendar cl = new GregorianCalendar();
         int days = cl.get(GregorianCalendar.DAY_OF_MONTH);
         int months = cl.get(GregorianCalendar.MONTH);
@@ -146,17 +130,52 @@ public class MainClass {
 
         cl.set(years, months, days);
         int dayweek = cl.get(Calendar.DAY_OF_WEEK);
+        File currentFile = null;
+        Date lastCurrDate = null;
+        if(dayweek == 7){
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.set(Calendar.DAY_OF_WEEK, -1);
+            lastCurrDate = calendar.getTime();
+        }else if(dayweek == 1){
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.set(Calendar.DAY_OF_WEEK, 1);
+            lastCurrDate = calendar.getTime();
+        }
+        currentFile = new File(dateFormat.format(lastCurrDate) + ".txt");
+        String[][] matrix = new String[stocks.size()][4];
+        if(!currentFile.exists()){
+            for (j = 0; j < stocks.size(); j++) {
+                try {
+                    yahoofin(stocks.get(j), j);
+                } catch (Exception e) {
+                    System.out.println("Exception occured : " + e);
+
+                }
+            }
+        matrix = display();
+        }
+
+
+
 
         if (dayweek!=7 && dayweek!=1) {
 
-            try (FileWriter fw = new FileWriter(dateFormat.format(date) + ".txt")) {
-                for (int k = 0; k < price.size(); k++) {
-                    for (int m = 0; m < 4; m++) {
-                        fw.write(matrix[k][m]);
+            if(currentFile != null && currentFile.exists()){
+                //file exists
+                System.out.println("Current file exists");
+            }else{
+                try (FileWriter fw = new FileWriter(dateFormat.format(date) + ".txt")) {
+                    for (int k = 0; k < price.size(); k++) {
+                        for (int m = 0; m < 4; m++) {
+                            fw.write(matrix[k][m]);
+                            fw.write("\r\n");
+                        }
                         fw.write("\r\n");
                     }
-                    fw.write("\r\n");
                 }
+
             }
 
             JTable jt = new JTable(matrix, columns);
@@ -202,6 +221,7 @@ public class MainClass {
 
                             oldtable = fileread(dt);
                             JTable jt2 = new JTable(oldtable, columns);
+                            jt2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
                             TableColumn tc1 = jt2.getColumnModel().getColumn(2);
                             tc1.setCellRenderer(new TableCustom(2));
@@ -224,6 +244,7 @@ public class MainClass {
                         case 3:
                             oldtable = fileread(dt);
                             JTable jt3 = new JTable(oldtable, columns);
+                            jt3.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
                             TableColumn tc3 = jt3.getColumnModel().getColumn(2);
                             tc3.setCellRenderer(new TableCustom(2));
@@ -246,6 +267,7 @@ public class MainClass {
                         case 4:
                             oldtable = fileread(dt);
                             JTable jt4 = new JTable(oldtable, columns);
+                            jt4.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
                             TableColumn tc4 = jt4.getColumnModel().getColumn(2);
                             tc4.setCellRenderer(new TableCustom(2));
@@ -269,6 +291,7 @@ public class MainClass {
                         case 5:
                             oldtable = fileread(dt);
                             JTable jt5 = new JTable(oldtable, columns);
+                            jt5.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
                             TableColumn tc5 = jt5.getColumnModel().getColumn(2);
                             tc5.setCellRenderer(new TableCustom(2));
@@ -292,6 +315,7 @@ public class MainClass {
                         case 6:
                             oldtable = fileread(dt);
                             JTable jt6 = new JTable(oldtable, columns);
+                            jt6.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
                             TableColumn tc6 = jt6.getColumnModel().getColumn(2);
                             tc6.setCellRenderer(new TableCustom(2));
@@ -340,42 +364,6 @@ public class MainClass {
 
     }
 
-    public static void moneycntrl(String url, int j) throws IOException {
-        String s = "";
-        Document doc = Jsoup.connect(url).get();
-        Elements body = doc.getElementsByClass("main");
-        for (Element list : body) {
-            System.out.println("Text: " + list.text());
-            s = list.text();
-        }
-
-        int bracket = s.indexOf("(") - 6;
-        String change = s.substring(bracket, bracket + 6);
-
-        System.out.println("Change: " + change);
-        chg.add(j, change);
-
-        int v = s.indexOf("VOLUME");
-        int avgvol = s.indexOf("AVERAGE");
-
-        int live = s.indexOf("LIVE");
-
-        String pr = s.substring(live + 22, bracket);
-        System.out.println("Price: " + pr);
-        price.add(j, pr);
-
-        String p = s.substring(v + 6, avgvol);
-        p = p.replaceAll("\\s+", "");
-        p = p.replaceAll(",", "");
-        double v1 = Double.parseDouble(p) / 1000000;
-        DecimalFormat numberFormat = new DecimalFormat("#.000");
-
-        String vstr = numberFormat.format(v1);
-        System.out.println("Volume: " + p);
-        vlm.add(j, vstr);
-
-    }
-
     static public String[][] display() {
 
         String[][] data = new String[stocks.size()][4];
@@ -407,7 +395,7 @@ public class MainClass {
         String priceChange, stockPrice, copyPrice, vstr;
         try {
             stock = stock.replaceAll("\\s+", "");
-            Document document = Jsoup.connect("https://in.finance.yahoo.com/quote/" + stock + "?p=" + stock)
+            Document document = Jsoup.connect("https://finance.yahoo.com/quote/" + stock + "?p=" + stock)
                     .timeout(100000)
                     .followRedirects(true)
                     .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0")
@@ -421,7 +409,7 @@ public class MainClass {
             int psign, nsign;
             
             int indexAfterStock = response.indexOf(stock) + stock.length();
-            indexAfterStock += 45;  //cover ) NSE - NSE Real Time Price. Currency in INR 
+            indexAfterStock += 62;  //cover ) NSE - NSE Real Time Price. Currency in INR
             stockPrice = response.substring(indexAfterStock);
             stockPrice = stockPrice.substring(0, 70);
             copyPrice = stockPrice;
@@ -436,33 +424,6 @@ public class MainClass {
             int indexPercentChange = copyPrice.indexOf("(");
             priceChange = copyPrice.substring(0, indexPercentChange - 1);
             stockPrice = stockPrice.substring(0, indexForPositiveOrNegative);
-//            String sub = s.substring(w, w + 50);
-//
-//            if (sub.contains("-") && sub.contains("+")) {
-//                psign = sub.indexOf("+");
-//                int obrkt = sub.indexOf("(");
-//                chng = sub.substring(psign, obrkt);
-//                int wa = sub.indexOf("watchlist");
-//                pr = sub.substring(wa + 9, psign);
-//
-//            } else if (sub.contains("+") && !sub.contains("-")) {
-//                psign = sub.indexOf("+");
-//                int obrkt = sub.indexOf("(");
-//                chng = sub.substring(psign, obrkt);
-//                int wa = sub.indexOf("watchlist");
-//                pr = sub.substring(wa + 9, psign);
-//            } else if (sub.contains("-") && !sub.contains("+")) {
-//                nsign = sub.indexOf("-");
-//                int obrkt = sub.indexOf("(");
-//                chng = sub.substring(nsign, obrkt);
-//                int wa = sub.indexOf("watchlist");
-//                pr = sub.substring(wa + 9, nsign);
-//            } else {
-//                nsign = sub.indexOf("-");
-//                chng = "0.00";
-//                int wa = sub.indexOf("watchlist");
-//                pr = sub.substring(wa + 9, (sub.indexOf(chng) + 1));
-//            }
 
             int vol = response.indexOf("Volume");
             int avg = response.indexOf("Avg.");
@@ -492,9 +453,9 @@ public class MainClass {
             System.out.println("Price ");
             System.out.println("Change ");
             System.out.println("Volume ");
-            price.add(j, "N/A");
-            vlm.add(j, "N/A");
-            chg.add(j, "N/A");
+            price.add(j, "0.0");
+            vlm.add(j, "0.0");
+            chg.add(j, "0.0");
         }
     }
 
@@ -565,7 +526,7 @@ public class MainClass {
 
         ArrayList<String> list = new ArrayList<>();
 
-        Document doc = Jsoup.connect("https://in.finance.yahoo.com/quote/%5EBSESN/history?p=%5EBSESN").get();
+        Document doc = Jsoup.connect("https://finance.yahoo.com/quote/%5EBSESN/history?p=%5EBSESN").get();
 
         String[] a0;
 
