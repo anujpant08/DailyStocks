@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-/**
- *
- * @author ANUJ
+/*
+
+  @author ANUJ
  */
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,7 +17,6 @@ package dailystock;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
-import java.text.DecimalFormat;
 
 /**
  *
@@ -25,11 +24,11 @@ import java.text.DecimalFormat;
  */
 public class TableCustom extends DefaultTableCellRenderer  {
     
-    int clmn=0;
+    int column;
     
     TableCustom(int col)
     {
-        clmn=col;
+        column =col;
     }
     
     public Component getTableCellRendererComponent(JTable table,
@@ -42,7 +41,7 @@ public class TableCustom extends DefaultTableCellRenderer  {
       super.getTableCellRendererComponent(table, value,
                                           isSelected, hasFocus,
                                           row, column);
-        String s = "";
+        String s;
     if(table.getModel().getValueAt(row, column ) != null){
         s =  table.getModel().getValueAt(row, column ).toString().replaceAll("\\s+","").replaceAll(",", "");
     }else{

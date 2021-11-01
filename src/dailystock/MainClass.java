@@ -17,6 +17,7 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,24 +39,14 @@ public class MainClass {
 
     static String[] columns = {"Code", "Price", "Change", "Volume"};
 
-    static ArrayList<String> price = new ArrayList<String>();
-    static ArrayList<String> chg = new ArrayList<String>();
-    static ArrayList<String> vlm = new ArrayList<String>();
+    static ArrayList<String> price = new ArrayList<>();
+    static ArrayList<String> chg = new ArrayList<>();
+    static ArrayList<String> vlm = new ArrayList<>();
     //add stocks here in arraylist
+    static LinkedList<String> stocks = new LinkedList<>(List.of(""));
 
-    static LinkedList<String> stocks = new LinkedList<String>(Arrays.asList(""));
+    public static void main(String[] args) throws IOException {
 
-    static Elements moduleBody = null, sectionC = null, module = null;
-    static Element headerQuoteContainer = null;
-
-    /**
-     *
-     * @param args
-     * @throws java.io.IOException
-     */
-    public static void main(String args[]) throws IOException {
-
-        GridBagConstraints c = new GridBagConstraints();
         JLabel jlbl = new JLabel("    Loading stock quotes...Please Wait");
 
         jlbl.setPreferredSize(new Dimension(250, 250));
@@ -77,7 +68,7 @@ public class MainClass {
 
         cl.set(years, months, days);
         int dayweek = cl.get(Calendar.DAY_OF_WEEK);
-        File currentFile = null;
+        File currentFile;
         Date lastCurrDate = new Date();
         if(dayweek == 7){
             Calendar calendar = Calendar.getInstance();
@@ -104,12 +95,10 @@ public class MainClass {
         matrix = display();
         }
 
-
-
-        JTable jt = null;
+        JTable jt;
         if (dayweek!=7 && dayweek!=1) {
 
-            if(currentFile != null && currentFile.exists()){
+            if(currentFile.exists()){
                 //file exists
                 System.out.println("Current file exists");
                 jt = new JTable(fileread(new Date()), columns);
@@ -162,21 +151,16 @@ public class MainClass {
                 try {
 
                     switch (dayofweek) {
-
-                        case 2:
-
+                        case 2 -> {
                             oldtable = fileread(dt);
                             JTable jt2 = new JTable(oldtable, columns);
                             jt2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
                             TableColumn tc1 = jt2.getColumnModel().getColumn(2);
                             tc1.setCellRenderer(new TableCustom(2));
                             TableColumn t1 = jt2.getColumnModel().getColumn(0);
                             t1.setPreferredWidth(100);
-
                             TableColumn tc2 = jt2.getColumnModel().getColumn(1);
                             tc2.setPreferredWidth(80);
-
                             jt2.setFillsViewportHeight(true);
                             jt2.setFont(new Font("Arial", Font.BOLD, 20));
                             jt2.setRowHeight(50);
@@ -185,102 +169,79 @@ public class MainClass {
                             jp.add(jt2);
                             BoxLayout box2 = new BoxLayout(jp, BoxLayout.X_AXIS);
                             jp.setLayout(box2);
-                            break;
-
-                        case 3:
+                        }
+                        case 3 -> {
                             oldtable = fileread(dt);
                             JTable jt3 = new JTable(oldtable, columns);
                             jt3.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
                             TableColumn tc3 = jt3.getColumnModel().getColumn(2);
                             tc3.setCellRenderer(new TableCustom(2));
                             TableColumn t3 = jt3.getColumnModel().getColumn(0);
                             t3.setPreferredWidth(100);
                             TableColumn tcc3 = jt3.getColumnModel().getColumn(1);
                             tcc3.setPreferredWidth(80);
-
                             jt3.setFillsViewportHeight(true);
                             jt3.setFont(new Font("Arial", Font.BOLD, 20));
                             jt3.setRowHeight(50);
-
                             jp.add(jt3);
                             BoxLayout box1 = new BoxLayout(jp, BoxLayout.X_AXIS);
                             jp.setLayout(box1);
                             jp.setSize(200, 1000);
-
-                            break;
-
-                        case 4:
+                        }
+                        case 4 -> {
                             oldtable = fileread(dt);
                             JTable jt4 = new JTable(oldtable, columns);
                             jt4.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
                             TableColumn tc4 = jt4.getColumnModel().getColumn(2);
                             tc4.setCellRenderer(new TableCustom(2));
                             TableColumn t4 = jt4.getColumnModel().getColumn(0);
                             t4.setPreferredWidth(100);
-
                             TableColumn t4c = jt4.getColumnModel().getColumn(1);
                             t4c.setPreferredWidth(80);
-
                             jt4.setFillsViewportHeight(true);
                             jt4.setFont(new Font("Arial", Font.BOLD, 20));
                             jt4.setRowHeight(50);
-
                             jp.setSize(200, 1000);
                             jp.add(jt4);
                             BoxLayout box4 = new BoxLayout(jp, BoxLayout.X_AXIS);
                             jp.setLayout(box4);
-
-                            break;
-
-                        case 5:
+                        }
+                        case 5 -> {
                             oldtable = fileread(dt);
                             JTable jt5 = new JTable(oldtable, columns);
                             jt5.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
                             TableColumn tc5 = jt5.getColumnModel().getColumn(2);
                             tc5.setCellRenderer(new TableCustom(2));
                             TableColumn t5 = jt5.getColumnModel().getColumn(0);
                             t5.setPreferredWidth(100);
-
                             TableColumn t5c = jt5.getColumnModel().getColumn(1);
                             t5c.setPreferredWidth(80);
-
                             jt5.setFillsViewportHeight(true);
                             jt5.setFont(new Font("Arial", Font.BOLD, 20));
                             jt5.setRowHeight(50);
-
                             jp.setSize(200, 1000);
                             jp.add(jt5);
                             BoxLayout box5 = new BoxLayout(jp, BoxLayout.X_AXIS);
                             jp.setLayout(box5);
-
-                            break;
-
-                        case 6:
+                        }
+                        case 6 -> {
                             oldtable = fileread(dt);
                             JTable jt6 = new JTable(oldtable, columns);
                             jt6.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
                             TableColumn tc6 = jt6.getColumnModel().getColumn(2);
                             tc6.setCellRenderer(new TableCustom(2));
                             TableColumn t6 = jt6.getColumnModel().getColumn(0);
                             t6.setPreferredWidth(200);
-
                             TableColumn t6c = jt6.getColumnModel().getColumn(1);
                             t6c.setPreferredWidth(80);
                             jt6.setFillsViewportHeight(true);
                             jt6.setFont(new Font("Arial", Font.BOLD, 20));
                             jt6.setRowHeight(50);
-
                             jp.setSize(200, 1000);
                             jp.add(jt6);
                             BoxLayout box6 = new BoxLayout(jp, BoxLayout.X_AXIS);
                             jp.setLayout(box6);
-
-                            break;
-
+                        }
                     }
                 } catch (FileNotFoundException x) {
 
@@ -318,18 +279,10 @@ public class MainClass {
         for (i = 0; i < stocks.size(); i++) {
             for (j = 0; j < 4; j++) {
                 switch (j) {
-                    case 0:
-                        data[i][0] = stocks.get(i);
-                        break;
-                    case 1:
-                        data[i][1] = price.get(i) + " ";
-                        break;
-                    case 2:
-                        data[i][2] = chg.get(i);
-                        break;
-                    case 3:
-                        data[i][3] = vlm.get(i);
-                        break;
+                    case 0 -> data[i][0] = stocks.get(i);
+                    case 1 -> data[i][1] = price.get(i) + " ";
+                    case 2 -> data[i][2] = chg.get(i);
+                    case 3 -> data[i][3] = vlm.get(i);
                 }
             }
 
@@ -337,8 +290,8 @@ public class MainClass {
         return data;
     }
 
-    public static void yahoofin(String stock, int j) throws IOException, InterruptedException {
-        String priceChange, stockPrice, copyPrice, vstr;
+    public static void yahoofin(String stock, int j) throws InterruptedException {
+        String priceChange, stockPrice, vstr;
         try {
             stock = stock.replaceAll("\\s+", "");
             Document document = Jsoup.connect("https://groww.in/v1/api/stocks_data/v1/accord_points/exchange/NSE/segment/CASH/latest_prices_ohlc/" + stock.substring(0, stock.length() - 3))
@@ -431,28 +384,26 @@ public class MainClass {
                 while ((word = br1.readLine()) != null) {
                     if (!word.equals("") && index < stocks.size() && !word.equals("\n")) {
                         switch (cnt) {
-                            case 1:
+                            case 1 -> {
                                 oldtable[index][0] = word;
                                 cnt++;
-                                break;
-                            case 2:
+                            }
+                            case 2 -> {
                                 oldtable[index][1] = word;
                                 cnt++;
-                                break;
-                            case 3:
+                            }
+                            case 3 -> {
                                 oldtable[index][2] = word;
                                 cnt++;
-                                break;
-                            case 4:
+                            }
+                            case 4 -> {
                                 //convert to million
                                 String volume = word.replaceAll("\\s+", "");
-                                
                                 oldtable[index][3] = volume;
                                 index++;
                                 cnt = 1;
-                                break;
+                            }
                         }
-                    } else {
                     }
                     //FileReading finished !!!
                     
@@ -506,14 +457,14 @@ public class MainClass {
 
         int a = 0;
 
-        for (int i = 0; i < list.size(); i++) {
+        for (String s : list) {
             if (count < 5) {
                 if (a < 3) {
                     if (a != 2) {
-                        rows[count][a] = list.get(i);
+                        rows[count][a] = s;
                         a++;
                     } else {
-                        rows[count][a] = list.get(i);
+                        rows[count][a] = s;
                         count++;
                         a = 0;
                     }
@@ -526,9 +477,9 @@ public class MainClass {
 
         }
 
-        for (int i = 0; i < rows.length; i++) {
+        for (String[] row : rows) {
             for (int j = 0; j < 3; j++) {
-                System.out.print(rows[i][j] + "\t");
+                System.out.print(row[j] + "\t");
             }
             System.out.println();
         }
