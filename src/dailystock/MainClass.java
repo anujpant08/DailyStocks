@@ -20,6 +20,8 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -131,7 +133,7 @@ public class MainClass {
         cl.set(years, months, days);
         int dayweek = cl.get(Calendar.DAY_OF_WEEK);
         File currentFile = null;
-        Date lastCurrDate = null;
+        Date lastCurrDate = new Date();
         if(dayweek == 7){
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
@@ -159,13 +161,14 @@ public class MainClass {
 
 
 
-
+        JTable jt = null;
         if (dayweek!=7 && dayweek!=1) {
 
             if(currentFile != null && currentFile.exists()){
                 //file exists
                 System.out.println("Current file exists");
-            }else{
+                jt = new JTable(fileread(new Date()), columns);
+            }else {
                 try (FileWriter fw = new FileWriter(dateFormat.format(date) + ".txt")) {
                     for (int k = 0; k < price.size(); k++) {
                         for (int m = 0; m < 4; m++) {
@@ -175,10 +178,8 @@ public class MainClass {
                         fw.write("\r\n");
                     }
                 }
-
+                jt = new JTable(matrix, columns);
             }
-
-            JTable jt = new JTable(matrix, columns);
 
             TableColumn tc = jt.getColumnModel().getColumn(2);
             tc.setCellRenderer(new TableCustom(2));
@@ -395,48 +396,60 @@ public class MainClass {
         String priceChange, stockPrice, copyPrice, vstr;
         try {
             stock = stock.replaceAll("\\s+", "");
-            Document document = Jsoup.connect("https://finance.yahoo.com/quote/" + stock + "?p=" + stock)
+            Document document = Jsoup.connect("https://groww.in/v1/api/stocks_data/v1/accord_points/exchange/NSE/segment/CASH/latest_prices_ohlc/" + stock.substring(0, stock.length() - 3))
                     .timeout(100000)
                     .followRedirects(true)
-                    .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0")
+                    .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36")
                     .ignoreHttpErrors(true)
+                    .ignoreContentType(true)
                     .referrer("http://www.google.com")
                     .get();
 
-            Element content = document.getElementById("app");
-            String response = content.text();
+            String response = document.body().text();
             System.out.println(response);
-            int psign, nsign;
-            
-            int indexAfterStock = response.indexOf(stock) + stock.length();
-            indexAfterStock += 62;  //cover ) NSE - NSE Real Time Price. Currency in INR
-            stockPrice = response.substring(indexAfterStock);
-            stockPrice = stockPrice.substring(0, 70);
-            copyPrice = stockPrice;
-            int indexForPositiveOrNegative = stockPrice.indexOf("+");
-            if(indexForPositiveOrNegative == -1){
-                indexForPositiveOrNegative = stockPrice.indexOf("-");
+            Pattern stockPricePattern = Pattern.compile("\"ltp\":([^,]+),\"volume\":([^,]+),[^,]+,[^,]+,[^,]+,[^,]+,[^,]+,\"dayChange\":([^,]+)");
+            Matcher stockPriceMatcher = stockPricePattern.matcher(response);
+            if(stockPriceMatcher.find()){
+                stockPrice = stockPriceMatcher.group(1);
+                vstr = stockPriceMatcher.group(2);
+                priceChange = stockPriceMatcher.group(3);
+                if(!priceChange.startsWith("-") & Double.parseDouble(priceChange) != 0.0){
+                    priceChange = "+" + priceChange;
+                }
+            }else{
+                stockPrice = "0.0";
+                priceChange = "0.0";
+                vstr = "0.0";
             }
-            if(indexForPositiveOrNegative == -1){
-                indexForPositiveOrNegative = stockPrice.indexOf("0.00");
-            }
-            copyPrice = copyPrice.substring(indexForPositiveOrNegative);
-            int indexPercentChange = copyPrice.indexOf("(");
-            priceChange = copyPrice.substring(0, indexPercentChange - 1);
-            stockPrice = stockPrice.substring(0, indexForPositiveOrNegative);
-
-            int vol = response.indexOf("Volume");
-            int avg = response.indexOf("Avg.");
-            String volume = response.substring(vol + 6, avg);
+//            int indexAfterStock = response.indexOf(stock) + stock.length();
+//            indexAfterStock += 62;  //cover ) NSE - NSE Real Time Price. Currency in INR
+//            stockPrice = response.substring(indexAfterStock);
+//            stockPrice = stockPrice.substring(0, 70);
+//            copyPrice = stockPrice;
+//            int indexForPositiveOrNegative = stockPrice.indexOf("+");
+//            if(indexForPositiveOrNegative == -1){
+//                indexForPositiveOrNegative = stockPrice.indexOf("-");
+//            }
+//            if(indexForPositiveOrNegative == -1){
+//                indexForPositiveOrNegative = stockPrice.indexOf("0.00");
+//            }
+//            copyPrice = copyPrice.substring(indexForPositiveOrNegative);
+//            int indexPercentChange = copyPrice.indexOf("(");
+//            priceChange = copyPrice.substring(0, indexPercentChange - 1);
+//            stockPrice = stockPrice.substring(0, indexForPositiveOrNegative);
+//
+//            int vol = response.indexOf("Volume");
+//            int avg = response.indexOf("Avg.");
+//            String volume = response.substring(vol + 6, avg);
             
             stockPrice = stockPrice.replaceAll("\\s+", "");
             priceChange = priceChange.replaceAll("\\s+", "");
-            volume = volume.replaceAll("\\s+", "");
+//            volume = volume.replaceAll("\\s+", "");
 
             priceChange = priceChange.replaceAll("\\s+", "");
-            volume = volume.replaceAll(",", "");
+            vstr = vstr.replaceAll(",", "");
 
-            double v1 = Double.parseDouble(volume) / 1000000;
+            double v1 = Double.parseDouble(vstr) / 1000000;
             DecimalFormat numberFormat = new DecimalFormat("#.000");
 
             vstr = numberFormat.format(v1);
@@ -448,7 +461,8 @@ public class MainClass {
             vlm.add(j, vstr);
             chg.add(j, priceChange);
         } catch (Exception e) {
-            System.out.println("Exception occured : " + e);
+            System.out.println("Exception occurred : " +  e);
+            e.printStackTrace();
             TimeUnit.SECONDS.sleep(1);
             System.out.println("Price ");
             System.out.println("Change ");

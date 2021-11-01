@@ -17,6 +17,7 @@ package dailystock;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -41,11 +42,14 @@ public class TableCustom extends DefaultTableCellRenderer  {
       super.getTableCellRendererComponent(table, value,
                                           isSelected, hasFocus,
                                           row, column);
-    
-    String s =  table.getModel().getValueAt(row, column ).toString().replaceAll("\\s+","");
-    
+        String s = "";
+    if(table.getModel().getValueAt(row, column ) != null){
+        s =  table.getModel().getValueAt(row, column ).toString().replaceAll("\\s+","").replaceAll(",", "");
+    }else{
+        s = "0.00";
+    }
+
     //System.out.println(d);
-    
     double d=Double.parseDouble(s);
     if(d<0)
     {
